@@ -15,7 +15,7 @@ export function App() {
         const id = await fetchDeckId();
         setDeckId(id);
       } catch (e) {
-        setError("Ocorreu um erro ao embbaralhar as cartas");
+        setError("Ocorreu um erro ao embaralhar as cartas");
       } finally {
         setLoading(false);
       }
