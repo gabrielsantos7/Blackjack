@@ -1,4 +1,5 @@
 export interface Card {
+  code: string;
   value: string;
   suit: string;
   image: string;

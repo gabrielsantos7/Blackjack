@@ -10,10 +10,10 @@ import {
 
 interface IntroProps {
   showIntro: boolean;
-  setShowIntro: (value: boolean) => void;
+  startGame: () => void;
 }
 
-export function Intro({ showIntro, setShowIntro }: IntroProps) {
+export function Intro({ showIntro, startGame }: IntroProps) {
   if (!showIntro) {
     return null;
   }
@@ -24,7 +24,7 @@ export function Intro({ showIntro, setShowIntro }: IntroProps) {
         <h2 className="text-xl font-semibold">BlackJack</h2>
 
         <p className="mb-4">Bem-vindo ao nosso jogo de BlackJack!</p>
-        <Button onClick={() => setShowIntro(false)}>Jogar</Button>
+        <Button onClick={startGame}>Jogar</Button>
         <Dialog>
           <DialogTrigger>Regras</DialogTrigger>
           <DialogContent>
