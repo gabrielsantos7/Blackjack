@@ -4,7 +4,484 @@
 
 @layer base {
   :root {
-
-    --radius: 0.5rem
+    --primary-color: #1c1c1e; /* Cor de fundo principal escura */
+    --secondary-color: #ffffff; /* Cor de fundo dos cards */
+    --accent-color: #e63946; /* Cor do botão */
+    --text-color: #f1faee; /* Cor do texto */
+    --highlight-color: #f1c40f; /* Cor de destaque */
+    --border-radius: 0.5rem;
+    --shadow-color: rgba(0, 0, 0, 0.3); /* Cor da sombra */
   }
+
+  body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: flex; 
+    overflow: hidden; 
+    transition: background-color 0.3s ease; /* Transição suave */
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(7, 7, 7, 0.856); 
+    z-index: -1; 
+    transition: background 0.3s ease; /* Transição suave */
+  }
+
+  .content {
+    position: relative; /* Coloca o conteúdo acima da sobreposição */
+    z-index: 2; /* Garante que o conteúdo esteja visível */
+    padding: 2rem; /* Adiciona espaçamento */
+  }
+
+  .dealer-h2  {
+    font-size: 22px; 
+     color: #ffff;
+     background-color: #8a0a0a; 
+    margin-bottom: 1rem; 
+    text-align: center; 
+    transition: transform 0.3s ease, color 0.3s ease; 
+  }
+  
+  .dealer-h2:hover {
+    transform: scale(1.05); 
+    color: rgba(255, 255, 255, 0.8); 
+  }
+  
+
+
+
+  .voce-h2  {
+    font-size: 22px; 
+     color: #ffff;
+     background-color: #8789eb; 
+    margin-bottom: 1rem; 
+    text-align: center; 
+    transition: transform 0.3s ease, color 0.3s ease; 
+  }
+  
+  .voce-h2:hover {
+    transform: scale(1.05); 
+    color: rgba(255, 255, 255, 0.8); 
+  }
+
+
+  .badge1 {
+    position: relative;
+    background-color: #8789eb;
+    color: #ffff;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    top: 10px;
+    transition: transform 0.2s; 
+  }
+
+  .badge1:hover {
+    transform: translateY(-3px);
+  }
+
+
+  .badge2 {
+    position: relative;
+    background-color: #8a0a0a;
+    color: #ffff;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    top: 10px;
+    transition: transform 0.2s; 
+  }
+
+  .badge2:hover {
+    transform: translateY(-3px);
+  }
+
+
+
+
+  
+.button {
+  
+    background-color: #c0392b; 
+    color: white; 
+    width: 90px;
+    border: none; 
+    border-radius: 0.5rem; 
+    padding: 0.5rem 1rem;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  
+  .button:hover {
+    background-color: #a32d24; 
+  }
+
+
+.button:active {
+  transform: translateY(0); /* Retorna à posição original ao clicar */
+}
+
+
+
+
+
+.button-stand {
+  background: linear-gradient(90deg, #8789eb, #8a0a0a);
+  color: #fff; 
+  padding: 0.75rem 1.5rem; 
+  border: none; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  font-size: 1rem; 
+  font-weight: bold; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+
+.button-stand:hover {
+  transform: translateY(-2px); 
+}
+
+.button-stand:active {
+  transform: translateY(0); /* Retorna à posição original ao clicar */
+}
+
+
+
+
+
+
+.button-sair {
+  position: relative;
+  background-color:#195706; 
+  left: -30px;
+  top: -20px;
+  color: #fff; 
+  padding: 20px; 
+  margin: 20px;
+  border: none; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  font-size: 1rem; 
+  font-weight: bold; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+
+.button-sair:hover {
+  background-color: darken(var(--accent-color), 10%); 
+  transform: translateY(-2px); 
+}
+
+.button-sair:active {
+  transform: translateY(0); /* Retorna à posição original ao clicar */
+}
+
+
+
+
+
+
+
+  .playing-card {
+    background-color: var(--secondary-color);
+    border: 2px solid var(--highlight-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    width: 120px; /* Largura aumentada para os cards */
+    height: 160px; /* Altura aumentada para os cards */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px var(--shadow-color); /* Sombra mais forte */
+    margin: 1rem; /* Espaçamento aumentado */
+    position: relative;
+    transition: transform 0.2s; /* Transição suave para transformação */
+  }
+
+  .playing-card:hover {
+    transform: scale(1.05); 
+  }
+
+  .playing-card img {
+    max-width: 90%; 
+    max-height: 90%; 
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .justify-around {
+    justify-content: space-around;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+
+  .gap-8 {
+    gap: 2rem;
+  }
+
+  .gap-4 {
+    gap: 1rem;
+  }
+
+  .mt-8 {
+    margin-top: 2rem;
+  }
+
+  .h-screen {
+    height: 100vh;
+  }
+}
+
+.mb-4 {
+  color: #000;
+}
+
+
+
+
+
+.DialogContent {
+  max-width: 600px;
+  margin: auto; 
+  padding: 20px; 
+  background-color: #fff; 
+  border-radius: 80px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.DialogContent.open {
+  transform: scale(1); 
+  opacity: 1; 
+}
+
+.DialogContent.closed {
+  transform: scale(0.9); 
+  opacity: 0; 
+}
+
+
+.DialogHeader {
+  margin-bottom: 1rem; 
+}
+
+
+.DialogTitle {
+  font-size: 2rem; 
+  font-weight: bold; 
+  color: #222497; 
+  margin-bottom: 0.5rem; 
+  text-align: center; 
+}
+
+
+.DialogDescription {
+  font-size: 12px; 
+  color: #555555; 
+  line-height: 1.6; 
+  text-align: justify; 
+}
+
+
+.DialogTrigger {
+  background-color: #c0392b; 
+  color: white; 
+  border: none; 
+  border-radius: 0.5rem; 
+  padding: 0.5rem 1rem;
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+
+.DialogTrigger:hover {
+  background-color: #a32d24; 
+}
+
+
+
+.DialogTrigger:active {
+  transform: translateY(0); /* Retorna à posição original ao clicar */
+}
+
+
+
+.game-instructions {
+  background-color: #f8f9fa; 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.instructions-title {
+  font-size: 24px; 
+  margin-bottom: 15px; 
+}
+
+.card-values, .game-actions {
+  list-style-type: disc; 
+  margin-left: 20px; 
+  margin-bottom: 15px; 
+}
+
+.card-values li, .game-actions li {
+  margin-bottom: 5px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+.container {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  margin-top: -20px; 
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #f8f9fa; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; 
+}
+
+
+
+.container > div {
+  position: relative;
+  margin-top: 0px;
+  width: 50%; 
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 70px;
+  
+}
+
+
+
+
+/* Estilo para "Rodadas ganhas" do jogador */
+.rounds-won {
+  position: absolute;
+  font-size: 1.2em; 
+  color: #222497; 
+ top: -120px;
+  left: 120px
+}
+
+/* Estilo para "Pontuação atual" do jogador */
+.current-points {
+  position: absolute;
+  font-size: 1.2em; 
+  color: #222497; 
+ left: 330px;
+  top: -120px;
+}
+
+
+
+/* Estilo para "Rodadas ganhas" do jogador 2 */
+.rounds-won2 {
+  position: absolute;
+  font-size: 1.2em; 
+  color: #222497; 
+  top: -120px;
+  left: 140px
+}
+
+/* Estilo para "Pontuação atual" do jogador 2 */
+.current-points2 {
+  position: absolute;
+  font-size: 1.2em; 
+  color: #222497; 
+ left: 330px;
+  top: -120px;
+}
+
+
+
+
+
+
+/* Estilizando o parágrafo de rodadas jogadas */
+
+.rounds-played {
+  position: relative;
+  font-weight: bold; 
+  color: #6e071d; 
+  top: 50px; 
+  align-items: center;
+  text-align: center;
+  width: 150px;
+  
+  
+}
+
+
+
+.container p {
+  margin: 5px 0;
+  font-size: 16px; 
+   top: 10px;
+
+}
+
+
+/* Estilo para o contêiner do jogo */
+.card-container {
+  perspective: 1000px; 
+}
+
+.card-container .PlayingCard {
+  width: 100px; 
+  height: 140px; 
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.card-container:hover .PlayingCard {
+  transform: scale(1.05);
+}
+
+
+strong {
+  font-weight: bold;
+  color: #6e071d;
+}
+
+
+strong1 {
+  font-weight: bold;
+  color: #222497;
 }
