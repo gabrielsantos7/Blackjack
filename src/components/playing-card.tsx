@@ -7,6 +7,7 @@ interface PlayingCardProps {
   card: Card | null;
   canFlip: boolean;
   isFaceUp: boolean;
+  isDealer?: boolean;  // Nova prop para indicar se é uma carta do dealer
   onCardClick?: () => void;
 }
 
@@ -14,32 +15,35 @@ export function PlayingCard({
   card,
   canFlip,
   isFaceUp,
+  isDealer = false,  // Padrão como falso, então não será dealer por padrão
   onCardClick,
 }: PlayingCardProps) {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(isFaceUp);
 
   useEffect(() => {
-    // Quando a carta é virada para cima (isFaceUp é true), inicia o efeito de flip
-    if (card && isFaceUp) {
-      setIsFlipped(false); // Inicialmente virada para baixo
-      setTimeout(() => setIsFlipped(true), 300); // Faz o efeito de virar após 300ms
+    if (card) {
+      if (isFaceUp || (isDealer && isFaceUp)) {
+        setIsFlipped(true);  // Dealer tem flip controlado
+      } else {
+        setIsFlipped(false);
+      }
     }
-  }, [card, isFaceUp]);
+  }, [card, isFaceUp, isDealer]);
 
   const handleCardClick = () => {
     if (card === null && onCardClick) {
       onCardClick();
+    } else if (canFlip) {
+      setIsFlipped((prev) => !prev);
     }
   };
 
-  // Renderiza a carta quando for nula (gerar nova carta)
+  // Renderiza uma carta em branco se `card` for `null`
   if (card === null) {
     return (
       <div onClick={handleCardClick}>
         <ReactFlipCard
-          frontComponent={
-            <img src={BackImage} alt="back" className="max-h-48" />
-          }
+          frontComponent={<img src={BackImage} alt="back" className="max-h-48" />}
           frontCss="cursor-pointer hover:scale-105 duration-200"
           backComponent={null}
           flipTrigger="disabled"
@@ -48,16 +52,16 @@ export function PlayingCard({
     );
   }
 
-  // Controla se a carta está virada manualmente com base no estado `isFlipped`
+  // Controla o flip da carta com `isFlipped`
   return (
     <ReactFlipCard
       frontComponent={<img src={BackImage} alt="back" className="max-h-48" />}
-      backComponent={
-        <img src={card.image} alt={card.code} className="max-h-48" />
-      }
-      flipTrigger="disabled" // Desabilita o flip por evento e controla via estado
-      flipByProp={isFlipped} // Controla o flip manualmente pelo estado
-      onClick={canFlip ? () => setIsFlipped((prev) => !prev) : undefined}
+      backComponent={<img src={card.image} alt={card.code} className="max-h-48" />}
+      flipTrigger="disabled"
+      flipByProp={isFlipped}
+      onClick={handleCardClick}
+      frontCss="cursor-pointer hover:scale-105 duration-200"
+      backCss="cursor-pointer hover:scale-105 duration-200"
     />
   );
 }
