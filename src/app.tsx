@@ -139,10 +139,10 @@ export function App() {
         ...defaults,
         angle: Math.random() * 360,
         spread: Math.random() * 360,
-        startVelocity: 30,
-        decay: 0.9,
+        startVelocity: 50,
+        decay: 0.92,
         scalar: 1.2,
-        ticks: 60,
+        ticks: 50,
       });
     }
   };
