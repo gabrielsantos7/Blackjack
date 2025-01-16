@@ -46,8 +46,8 @@ export function Intro({ showIntro, startGame }: IntroProps) {
           </ul>
           <p>Você joga contra o dealer e começa com duas cartas. Durante o jogo, você pode:</p>
           <ul className="game-actions"> <br></br>
-            <li><strong1>Pedir:</strong1> solicitar mais cartas.</li>
-            <li><strong1>Manter:</strong1> ficar com a mão atual.</li>
+            <li><strong>Pedir:</strong> solicitar mais cartas.</li>
+            <li><strong>Manter:</strong> ficar com a mão atual.</li>
           </ul>
           <p>
             O objetivo é somar 21 pontos ou ficar o mais próximo disso, sem ultrapassar esse valor. 
